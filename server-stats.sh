@@ -30,15 +30,15 @@ echo ""
 echo "[磁盘使用情况]"
 df -h --total | grep 'total' | awk '{print "总空间: "$2"\n已用: "$3"\n可用: "$4"\n使用率: "$5}'
 
-# CPU 使用率排名前5的进程
+# CPU 使用率排名前5的进程（完整命令行 + 可执行文件名）
 echo ""
 echo "[CPU 使用率排名前5的进程]"
-ps -eo pid,ppid,cmd,%cpu --sort=-%cpu | head -n 6
+ps -eo pid,ppid,%cpu,comm,args --sort=-%cpu | head -n 6
 
-# 内存使用率排名前5的进程
+# 内存使用率排名前5的进程（完整命令行 + 可执行文件名）
 echo ""
 echo "[内存使用率排名前5的进程]"
-ps -eo pid,ppid,cmd,%mem --sort=-%mem | head -n 6
+ps -eo pid,ppid,%mem,comm,args --sort=-%mem | head -n 6
 
 echo ""
 echo "========================="
